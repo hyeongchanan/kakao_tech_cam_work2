@@ -17,12 +17,17 @@ const StDashboard = styled.div`
 const Bag = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    }
     gap: 20px;
-    padding: 20px;
 `
 
 const EmptyCard = styled.div`
     height: 250px;
+    @media (max-width: 768px) {
+      height: 120px;
+    }
     background-color: #ffffff;
     border: 2px dashed #aaa;
     border-radius: 10px;

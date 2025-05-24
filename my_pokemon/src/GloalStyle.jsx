@@ -11,6 +11,9 @@ const GlobalStyle = createGlobalStyle`
 
     *{
         box-sizing: border-box;
+        max-width: 100%;
+        justify-content: center;
+        align-items: center; 
     }
 
     body {    
@@ -21,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     #root{
+        
         max-width: 1280px;
         width: 100%;
         margin: 0 auto;

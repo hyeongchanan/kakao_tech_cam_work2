@@ -3,6 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StCard = styled.div`
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: row;
+    }
     border: 1px solid rgb(221, 221, 221);
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -12,10 +16,9 @@ const StCard = styled.div`
     padding: 10px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    
 `
 const StButton = styled.button`
-    margin-top: 10px;
+    margin: 10px;
     padding: 5px 10px;
     font-size: 12px;
     cursor: pointer;
@@ -23,6 +26,16 @@ const StButton = styled.button`
     background-color: rgb(255, 0, 0);
     color: rgb(255, 255, 255);
     border-radius: 5px;
+`
+
+const StImg = styled.img`
+  @media (max-width: 768px) {
+        height: 100%;
+      }
+`
+
+const StP = styled.p`
+  margin: 10px 10px 10px 0px;
 `
 
 const PokemonCard = ({ pokemon, addPokemon, removePokemon, mode ="add" }) => {
@@ -39,9 +52,9 @@ const PokemonCard = ({ pokemon, addPokemon, removePokemon, mode ="add" }) => {
 
   return (
     <StCard onClick={showDetail}>
-      <img src={pokemon.img_url} />
-      <p>{pokemon.korean_name}</p>
-      <p>no.{pokemon.id}</p>
+      <StImg src={pokemon.img_url} />
+      <StP>{pokemon.korean_name}</StP>
+      <StP>no.{pokemon.id}</StP>
       {mode === 'add' && (
         <StButton onClick={(e) =>{ stopPropagation(e); addPokemon(pokemon)}}>추가</StButton>
       )}

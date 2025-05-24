@@ -14,6 +14,9 @@ const StButton = styled.button`
 `
 
 const Stimg = styled.img`
+    @media (max-width: 768px) {
+        width: 350px;
+    }
     width: 600px;
     margin-bottom: 20px;
 `
