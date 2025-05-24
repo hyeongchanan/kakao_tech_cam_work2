@@ -1,0 +1,63 @@
+import React from 'react'
+
+import MOCK_DATA from '../assets/mock.js/mock';
+import styled from 'styled-components';
+import PokemonCard from './PokemonCard';
+
+const StDashboard = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(248, 248, 248);
+    margin-bottom: 20px;
+    border-radius: 10px;
+`;
+
+const Bag = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+`
+
+const EmptyCard = styled.div`
+    height: 250px;
+    background-color: #ffffff;
+    border: 2px dashed #aaa;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+`;
+
+const BallImg = styled.img`
+    width: 50;
+    height: 50px;
+`
+
+const Dashboard = ({ selectedPokemon, removePokemon }) => {
+    const emptySlots = 6 - selectedPokemon.length;
+
+    return (
+        <StDashboard>
+            <h2> 나만의 포켓몬</h2>
+            <Bag>
+                {selectedPokemon.map((pokemon) => {
+                    return (
+                        <PokemonCard key={pokemon.id} pokemon={pokemon} removePokemon={removePokemon} mode="remove" />
+                    )
+                })}
+
+                {Array(emptySlots).fill(0).map((_, index) => (
+                    <EmptyCard key={`empty-${index}`}>
+                        <BallImg src='https://react-6-pokemon.vercel.app/assets/pokeball-13iwdk7Y.png'/>
+                    </EmptyCard>
+                ))}
+            </Bag>
+        </StDashboard>
+    );
+};
+
+export default Dashboard;
