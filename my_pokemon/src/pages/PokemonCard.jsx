@@ -29,6 +29,8 @@ const StButton = styled.button`
 `
 
 const StImg = styled.img`
+  overflow-clip-margin: content-box;
+  overflow: clip;
   @media (max-width: 768px) {
         height: 100%;
       }

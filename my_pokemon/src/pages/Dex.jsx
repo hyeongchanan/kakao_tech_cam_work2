@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import MOCK_DATA from '../assets/mock.js/mock'
 import PokemonList from './PokemonList'
-import GlobalStyle from '../GloalStyle'
 import styled from 'styled-components'
 import Dashboard from './Dashboard'
 
@@ -11,6 +10,7 @@ const StDiv = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    width: 100%
 `
 const Outer = styled.div`
   display: flex;
@@ -42,7 +42,6 @@ const Dex = () => {
 
   return (
     <Outer>
-      <GlobalStyle />
       <StDiv>
         <Dashboard selectedPokemon={selectedPokemon} removePokemon={removePokemon}/>
         <PokemonList addPokemon={addPokemon} />
