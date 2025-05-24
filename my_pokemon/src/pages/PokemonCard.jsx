@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import PokemonContext from "../context/PokemonContext"
 
 const StCard = styled.div`
     @media (max-width: 768px) {
@@ -16,6 +17,7 @@ const StCard = styled.div`
     padding: 10px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    
 `
 const StButton = styled.button`
     margin: 10px;
@@ -40,9 +42,10 @@ const StP = styled.p`
   margin: 10px 10px 10px 0px;
 `
 
-const PokemonCard = ({ pokemon, addPokemon, removePokemon, mode ="add" }) => {
+const PokemonCard = ({ pokemon, mode ="add" }) => {
 
   const navigate = useNavigate();
+  const {addPokemon,removePokemon} = useContext(PokemonContext);
 
   const showDetail = () =>{
     navigate(`/pokemon-detail?id=${pokemon.id}`)

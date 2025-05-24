@@ -3,6 +3,7 @@ import MOCK_DATA from '../assets/mock.js/mock'
 import PokemonList from './PokemonList'
 import styled from 'styled-components'
 import Dashboard from './Dashboard'
+import PokemonContext from "../context/PokemonContext"
 
 
 const StDiv = styled.div`
@@ -10,7 +11,11 @@ const StDiv = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    width: 100%
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
 `
 const Outer = styled.div`
   display: flex;
@@ -41,12 +46,14 @@ const Dex = () => {
   };
 
   return (
-    <Outer>
-      <StDiv>
-        <Dashboard selectedPokemon={selectedPokemon} removePokemon={removePokemon}/>
-        <PokemonList addPokemon={addPokemon} />
-      </StDiv>
-    </Outer>
+    <PokemonContext.Provider value = {{selectedPokemon,removePokemon,addPokemon}}>
+      <Outer>
+        <StDiv>
+          <Dashboard/>
+          <PokemonList/>
+        </StDiv>
+      </Outer>
+    </PokemonContext.Provider>
 
   )
 }

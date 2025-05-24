@@ -16,11 +16,12 @@ const StDiv = styled.div`
     border-radius: 10px;
 `
 
-const PokemonList = ({addPokemon}) => {
+const PokemonList = () => {
+
     return (
         <StDiv>
             {MOCK_DATA.map((pokemon) => {
-                return <PokemonCard key={pokemon.id} pokemon={pokemon} addPokemon={addPokemon} />
+                return <PokemonCard key={pokemon.id} pokemon={pokemon}/>
             })}
         </StDiv>
     )

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import MOCK_DATA from '../assets/mock.js/mock';
 import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
+import PokemonContext from "../context/PokemonContext"
 
 const StDashboard = styled.div`
     display: flex;
@@ -42,7 +43,8 @@ const BallImg = styled.img`
     height: 50px;
 `
 
-const Dashboard = ({ selectedPokemon, removePokemon }) => {
+const Dashboard = () => {
+    const {selectedPokemon} = useContext(PokemonContext);
     const emptySlots = 6 - selectedPokemon.length;
 
     return (
@@ -51,7 +53,7 @@ const Dashboard = ({ selectedPokemon, removePokemon }) => {
             <Bag>
                 {selectedPokemon.map((pokemon) => {
                     return (
-                        <PokemonCard key={pokemon.id} pokemon={pokemon} removePokemon={removePokemon} mode="remove" />
+                        <PokemonCard key={pokemon.id} pokemon={pokemon} mode="remove" />
                     )
                 })}
 
