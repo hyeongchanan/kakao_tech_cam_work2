@@ -1,7 +1,8 @@
-import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import MOCK_DATA from '../assets/mock.js/mock';
 import styled from 'styled-components';
+import { addPokemon, removePokemon } from '../redux/modules/selectPokemon';
+import { useDispatch, useSelector } from 'react-redux';
 
 const StImg = styled.img`
     width: 200px;
@@ -22,12 +23,29 @@ const StDiv = styled.div`
     margin: auto;
 `
 
+const Stbutton = styled.button`
+    margin : 5px;
+`
+
+const Redbutton = styled.button`
+    background-color: red;
+    color :white;
+    margin : 5px;
+`
+
 const PokemonDetail = () => {
     const query = useQuery();
     const id = parseInt(query.get('id'),10);
     const navigate = useNavigate();
 
     const pokemon = MOCK_DATA.find((p) => p.id === id);
+    const dispatch = useDispatch();
+
+    const selectedPokemon = useSelector((state) => state.selectPokemon.selectedPokemon);
+
+    const isSelected = selectedPokemon.some((pokemon) => pokemon.id === id);
+
+
     return (
         <StDiv>
             <StImg src={pokemon.img_url}></StImg>
@@ -39,7 +57,15 @@ const PokemonDetail = () => {
             </h2>
             <p>{pokemon.description}</p>
 
-            <button onClick={()=> navigate(-1)}>뒤로가기</button>
+            <span key= "button" >
+                <Stbutton onClick={()=> navigate(-1)}>뒤로가기</Stbutton>
+                {isSelected ? 
+                    <Redbutton onClick={()=> {dispatch(removePokemon(pokemon)), navigate(-1)}}>삭제하기</Redbutton>
+                    :
+                    <Redbutton onClick={()=> {dispatch(addPokemon(pokemon)), navigate(-1)}}>추가하기</Redbutton>
+                }
+                
+            </span>
         </StDiv>
     )
 }

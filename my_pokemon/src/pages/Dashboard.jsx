@@ -15,15 +15,16 @@ const StDashboard = styled.div`
 
 const Bag = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     @media (max-width: 768px) {
       grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     }
+    align-items: center;
     gap: 20px;
 `
 
 const EmptyCard = styled.div`
-    height: 250px;
+    height: 220px;
     @media (max-width: 768px) {
       height: 120px;
     }
@@ -37,8 +38,7 @@ const EmptyCard = styled.div`
 `;
 
 const BallImg = styled.img`
-    width: 50;
-    height: 50px;
+    max-height: 50px;
 `
 
 const Dashboard = () => {

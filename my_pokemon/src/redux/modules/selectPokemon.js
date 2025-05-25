@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const selectPokemonSlice = createSlice({
     name: "selectPokemon",
@@ -8,11 +9,11 @@ const selectPokemonSlice = createSlice({
     reducers:{
         addPokemon : (state,action) => {
             if (state.selectedPokemon.find((p) => p.id === action.payload.id)) {
-                alert("이미 선택한 포켓몬")
+                toast.warn("이미 선택한 포켓몬");
                 return;
             }
             if (state.selectedPokemon.length >= 6) {
-                alert("최대 개수 초과")
+                toast.error("최대개수 초과");
                 return;
             }
 

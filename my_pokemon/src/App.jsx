@@ -1,6 +1,7 @@
 import React from 'react'
 import Router from './shared/Router'
 import styled from 'styled-components'
+import { ToastContainer } from 'react-toastify'
 
 const StDiv = styled.div`
   box-sizing: border-box;
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <StDiv>
       <Router />
+      <ToastContainer/>
     </StDiv>
   )
 }
