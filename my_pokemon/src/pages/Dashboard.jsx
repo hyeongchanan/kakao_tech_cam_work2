@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
 
-import MOCK_DATA from '../assets/mock.js/mock';
 import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
-import PokemonContext from "../context/PokemonContext"
+import { useSelector } from 'react-redux';
 
 const StDashboard = styled.div`
     display: flex;
@@ -44,7 +42,9 @@ const BallImg = styled.img`
 `
 
 const Dashboard = () => {
-    const {selectedPokemon} = useContext(PokemonContext);
+
+    const selectedPokemon = useSelector((state) => state.selectPokemon.selectedPokemon);
+
     const emptySlots = 6 - selectedPokemon.length;
 
     return (

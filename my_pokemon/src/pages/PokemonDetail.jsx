@@ -22,7 +22,6 @@ const StDiv = styled.div`
     margin: auto;
 `
 
-
 const PokemonDetail = () => {
     const query = useQuery();
     const id = parseInt(query.get('id'),10);
@@ -35,7 +34,7 @@ const PokemonDetail = () => {
             <h1>{pokemon.korean_name}</h1>
             <h2>
                 {pokemon.types.map((type) => (
-                    <span>[{type}]</span>
+                    <span key={type}>[{type}]</span>
                 ))}
             </h2>
             <p>{pokemon.description}</p>

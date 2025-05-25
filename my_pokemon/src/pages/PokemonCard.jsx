@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import PokemonContext from "../context/PokemonContext"
+import { useDispatch, } from 'react-redux'
+import { addPokemon, removePokemon } from '../redux/modules/selectPokemon'
 
 const StCard = styled.div`
     @media (max-width: 768px) {
@@ -45,7 +46,7 @@ const StP = styled.p`
 const PokemonCard = ({ pokemon, mode ="add" }) => {
 
   const navigate = useNavigate();
-  const {addPokemon,removePokemon} = useContext(PokemonContext);
+  const dispatch = useDispatch();
 
   const showDetail = () =>{
     navigate(`/pokemon-detail?id=${pokemon.id}`)
@@ -61,10 +62,10 @@ const PokemonCard = ({ pokemon, mode ="add" }) => {
       <StP>{pokemon.korean_name}</StP>
       <StP>no.{pokemon.id}</StP>
       {mode === 'add' && (
-        <StButton onClick={(e) =>{ stopPropagation(e); addPokemon(pokemon)}}>추가</StButton>
+        <StButton onClick={(e) =>{ stopPropagation(e); dispatch(addPokemon(pokemon))}}>추가</StButton>
       )}
       {mode === 'remove' && (
-        <StButton onClick={(e) =>{ stopPropagation(e); removePokemon(pokemon)}} style={{ backgroundColor: 'gray' }}>
+        <StButton onClick={(e) =>{ stopPropagation(e); dispatch(removePokemon(pokemon))}} style={{ backgroundColor: 'gray' }}>
           삭제
         </StButton>
       )}
