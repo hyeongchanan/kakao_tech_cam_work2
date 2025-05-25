@@ -38,7 +38,7 @@ const Home = () => {
         <>
             <StDiv>
                 <Stimg src="https://react-6-pokemon.vercel.app/assets/pokemon-logo-RN0wntMB.png" alt="Pokemon Logo" />
-                <StButton onClick={() => { navigate("/Dex") }}>포켓몬 도감 시작하기</StButton>
+                <StButton onClick={() => { navigate("/dex") }}>포켓몬 도감 시작하기</StButton>
             </StDiv>
         </>
     )
